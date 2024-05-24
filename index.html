@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>who u?</title>
+</head>
+<body onload="retrieveValues()">
+    
+    <input type="text" id="xx" placeholder="Enter value for url 1">
+    <input type="text" id="yy" placeholder="Enter value for url 2">
+    <button onclick="sus()">save</button>
+
+    <script>
+        var url;
+        var x;
+        var y;
+
+
+        function sus() {
+        x = document.getElementById("xx").value;
+        y = document.getElementById("yy").value;
+        save();
+        
+        }
+
+        function save() {
+updateValues(x,y);
+}
+
+function updateValues() {
+  
+  storeValues();
+}
+
+function retrieveValues() {
+  var values = JSON.parse(localStorage.getItem('values'));
+  x = values.x;
+  y = values.y;
+  }
+
+function storeValues() {
+var values = {
+x: x,
+y: y
+};
+localStorage.setItem('values', JSON.stringify(values));
+}
+
+        
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Alt") {
+                performFunction('alt');
+            } else if (e.key === "Control") {
+                performFunction('control');
+            }
+        });
+
+        function performFunction(key) {
+            alert("wags is pro");
+            if (key === 'alt') {
+url = x;
+var win = window.open('about:blank')
+var iframe = win.document.createElement('iframe')
+iframe.style.width = "100%";
+iframe.style.height = "100%";
+iframe.style.border = "none";
+iframe.src = url;
+win.document.body.appendChild(iframe);
+            } else if (key === 'control') {
+                url = y;
+var win = window.open('about:blank')
+var iframe = win.document.createElement('iframe')
+iframe.style.width = "100%";
+iframe.style.height = "100%";
+iframe.style.border = "none";
+iframe.src = url;
+win.document.body.appendChild(iframe);
+            }
+        }
+    </script>
+</body>
+</html>
